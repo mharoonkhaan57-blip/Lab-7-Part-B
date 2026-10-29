@@ -1,0 +1,38 @@
+/* Name: M.Haroon-Ur-Rasheed Khan | Reg. No: Ai-9 | Subject: DSA | Sec: A */
+// Lab 07 Part B: Individual project demonstration
+
+#include "Lab_07_Part_B_Doubly_List.h"
+
+int main()
+{
+    BorrowingSession session;
+
+    session.InsertRight(new BookNode(101, "Data Structures"));
+    session.InsertRight(new BookNode(102, "Database Systems"));
+    session.InsertRight(new BookNode(103, "Operating Systems"));
+
+    cout << "Initial borrowing session:";
+    session.PrintForward();
+
+    session.Next();
+    session.InsertAfterCurrent(new BookNode(104, "Computer Networks"));
+    cout << "\nAfter inserting after current:";
+    session.PrintForward();
+
+    session.Next();
+    BookNode* removed = session.RemoveCurrent();
+    if (removed != nullptr)
+    {
+        cout << "\nRemoved book: " << removed->title << '\n';
+        delete removed;
+    }
+
+    session.PrintForward();
+    session.PrintBackward();
+
+    session.Previous();
+    cout << "\nAfter moving backward:";
+    session.PrintForward();
+
+    return 0;
+}
